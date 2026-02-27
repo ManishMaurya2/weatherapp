@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container dashboard-container">
+        <header class="dashboard-header">
+            <div>
+                <h1>Weather Dashboard</h1>
+                <div class="user-info">
+                    <span id="userEmailDisplay" style="color: var(--text-muted); font-size: 0.875rem;">Loading
+                        user...</span>
+                </div>
+            </div>
+            <button id="logoutBtn" class="logout-btn">Sign Out</button>
+        </header>
+
+        <div id="alert" class="alert"></div>
+
+        <section class="search-section">
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Enter city name (e.g. London, Tokyo)" autocomplete="off">
+                <button id="searchBtn">Search Weather</button>
+            </div>
+        </section>
+
+        <main id="weatherContent" class="hidden">
+            <div class="weather-main">
+                <!-- Current Weather Card -->
+                <div class="weather-card current-weather">
+                    <div class="city-name" id="cityName">London, GB</div>
+                    <div class="date-text" id="currentDate">Thursday, 24 April</div>
+                    <div class="temp-row">
+                        <div class="temp-large"><span id="currentTemp">21</span>°</div>
+                        <img src="" alt="Weather Icon" id="weatherIcon" class="weather-icon-large">
+                    </div>
+                    <div class="weather-desc" id="weatherDesc">Scattered Clouds</div>
+                </div>
+
+                <!-- Weather Details Grid -->
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div>
+                            <div class="detail-label">Humidity</div>
+                            <div class="detail-value"><span id="humidity">45</span>%</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div>
+                            <div class="detail-label">Wind Speed</div>
+                            <div class="detail-value"><span id="windSpeed">12</span> km/h</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div>
+                            <div class="detail-label">Pressure</div>
+                            <div class="detail-value"><span id="pressure">1012</span> hPa</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div>
+                            <div class="detail-label">Feels Like</div>
+                            <div class="detail-value"><span id="feelsLike">19</span>°C</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="forecast-section">
+                <h2>5-Day Forecast</h2>
+                <div class="forecast-grid" id="forecastGrid">
+                    <!-- Forecast items will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <div id="emptyState" class="footer-text" style="padding: 60px 0;">
+            <p>Enter a city name above to see the current weather and 5-day forecast.</p>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

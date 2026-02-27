@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .otp-inputs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 24px 0;
+        }
+
+        .otp-inputs input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Verify Email</h1>
+        <p class="subtitle">We've sent a 6-digit code to <br><strong id="userEmail">example@mail.com</strong></p>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="otpForm">
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" pattern="\d" required>
+                <input type="text" maxlength="1" pattern="\d" required>
+                <input type="text" maxlength="1" pattern="\d" required>
+                <input type="text" maxlength="1" pattern="\d" required>
+                <input type="text" maxlength="1" pattern="\d" required>
+                <input type="text" maxlength="1" pattern="\d" required>
+            </div>
+            <input type="hidden" id="fullOtp">
+            <button type="submit" id="submitBtn">Verify & Login</button>
+        </form>
+
+        <p class="footer-text">
+            Didn't receive a code? <a href="register.html">Try again</a>
+        </p>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Set email from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        if (email) document.getElementById('userEmail').innerText = email;
+
+        // Auto focus next input
+        const inputs = document.querySelectorAll('.otp-inputs input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        document.getElementById('otpForm').addEventListener('submit', (e) => {
+            const otp = Array.from(inputs).map(i => i.value).join('');
+            document.getElementById('fullOtp').value = otp;
+            handleAuth(e, 'verify-otp', email);
+        });
+    </script>
+</body>
+
+</html>
