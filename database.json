@@ -8,6 +8,15 @@
       "password_hash": "$2a$12$bLEzUe6DqdQCkQD85qTQoeT2VjWpFdyRRYpEZ5tG9dQxojLKz52N2",
       "otp": null,
       "otp_expires_at": null
+    },
+    {
+      "id": 1772179891567,
+      "created_at": "2026-02-27T08:11:31.567Z",
+      "is_verified": 1,
+      "email": "manish.maurya.87m@gmail.com",
+      "password_hash": "$2a$12$.DUtS4/PQTbObG2Ty9t70ulm6SK60GMtRj5Hx1hBWENVI362LIm2K",
+      "otp": null,
+      "otp_expires_at": null
     }
   ]
 }
